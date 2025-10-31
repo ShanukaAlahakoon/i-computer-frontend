@@ -1,30 +1,29 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import ProductCard from "./components/productCard";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/homePage.jsx";
+import LoginPage from "./pages/loginPage.jsx";
+import RegisterPage from "./pages/registerPage.jsx";
+import AdminPage from "./pages/adminPage.jsx";
+import TestPage from "./pages/test.jsx";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
-      <ProductCard
-        name="Laptop"
-        price="100,000"
-        image="https://picsum.photos/id/1/200/300"
-      />
-      <ProductCard
-        name="Smartphone"
-        price="80,000"
-        image="https://picsum.photos/id/3/200/300"
-      />
-      <ProductCard
-        name="Smartwatch"
-        price="30,000"
-        image="https://picsum.photos/id/5/200/300"
-      />
-    </>
+    <BrowserRouter>
+      <Toaster position="top-right" />
+      <div className="w-full h-screen bg-primary text-secondary">
+        <Routes>
+          <Route path="/*" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/admin/*" element={<AdminPage />} />
+          <Route path="/test" element={<TestPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
