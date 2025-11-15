@@ -22,7 +22,7 @@ export default function ProductPage() {
       {!loaded ? (
         <Loader />
       ) : (
-        <div className="w-full flex justify-center p-4">
+        <div className="w-full flex justify-center p-4 flex-row flex-wrap">
           {products.map((item) => {
             return <ProductCard key={item.productID} product={item} />;
           })}
