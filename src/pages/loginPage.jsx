@@ -45,7 +45,7 @@ export default function LoginPage() {
         <img
           src="/logo.png"
           alt="logo"
-          className="w-[200px] h-[200px] mb-[20px] object-cover"
+          className="w-[200px] h-[200px] mb-5 object-cover"
         />
         <h1 className="text-[50px] text-center text-gold text-shadow-accent text-shadow-2xs font-bold">
           Plug In. Power Up. Play Hard.
@@ -56,7 +56,7 @@ export default function LoginPage() {
       </div>
       <div className="w-1/2 h-full flex justify-center items-center">
         <div className="w-[450px] h-[600px] backdrop-blur-lg shadow-2xl rounded-2xl flex flex-col justify-center items-center p-[30px]">
-          <h1 className="text-[40px] font-bold mb-[20px] text-white text-shadow-white ">
+          <h1 className="text-[40px] font-bold mb-5 text-white text-shadow-white ">
             Login
           </h1>
           <input
@@ -65,7 +65,7 @@ export default function LoginPage() {
             }}
             placeholder="Your email"
             type="email"
-            className="w-full h-[50px] mb-[20px] rounded-lg border border-accent p-[10px] text-[20px] focus:outline-none focus:ring-2 focus:ring-gold"
+            className="w-full h-[50px] mb-5 rounded-lg border border-accent p-2.5 text-[20px] focus:outline-none focus:ring-2 focus:ring-gold"
           />
           <input
             onChange={(e) => {
@@ -73,9 +73,9 @@ export default function LoginPage() {
             }}
             placeholder="Your password"
             type="password"
-            className="w-full h-[50px] mb-[20px] rounded-lg border border-accent p-[10px] text-[20px] focus:outline-none focus:ring-gold focus:ring-2"
+            className="w-full h-[50px] mb-5 rounded-lg border border-accent p-2.5 text-[20px] focus:outline-none focus:ring-gold focus:ring-2"
           />
-          <p className="text-white not-italic text-right w-full mb-[20px]">
+          <p className="text-white not-italic text-right w-full mb-5">
             Forgest your password?
             <Link to="/register" className="text-gold italic">
               Reset here
@@ -83,7 +83,7 @@ export default function LoginPage() {
           </p>
           <button
             onClick={login}
-            className="w-full h-[50px] bg-accent text-white font-bold text-[20px] rounded-lg border-[2px] border-accent hover:bg-transparent hover:text-accent"
+            className="w-full h-[50px] bg-accent text-white font-bold text-[20px] rounded-lg border-2 border-accent hover:bg-transparent hover:text-accent"
           >
             Login
           </button>
