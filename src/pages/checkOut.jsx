@@ -1,10 +1,15 @@
 import { BsChevronUp } from "react-icons/bs";
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 export default function CheckOut() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
 
   const [cart, setCart] = useState(location.state);
 
@@ -20,6 +25,48 @@ export default function CheckOut() {
     return total;
   }
 
+  async function submitOrder() {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      toast.error("Please log in to place an order.");
+      navigate("/login");
+      return;
+    }
+
+    const orderData = [];
+
+    cart.forEach((item) => {
+      orderData.push({
+        productID: item.productID,
+        quantity: item.quantity,
+      });
+    });
+
+    axios
+      .post(
+        import.meta.env.VITE_BACKEND_URL + "/orders",
+        {
+          name: name,
+          address: address,
+          phone: phone,
+          items: orderData,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        toast.success("Order placed successfully!");
+        navigate("/ ");
+      })
+      .catch((err) => {
+        toast.error("Failed to place order. Please try again.");
+        console.error(err);
+      });
+  }
   return (
     // Main Page Container: Light gray background for contrast, full viewport height
     <div className="w-full min-h-screen bg-gray-50 py-10 px-4 flex flex-col items-center">
@@ -129,8 +176,75 @@ export default function CheckOut() {
         </div>
 
         {/* Footer / Checkout Section */}
+        <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100">
+          <h2 className="text-xl font-bold text-gray-800 mb-6">
+            Shipping Information
+          </h2>
+
+          {/* Grid Layout Starts Here */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Name Input (Left Side) */}
+            <div className="flex flex-col">
+              <label
+                htmlFor="name"
+                className="text-sm font-medium text-gray-700 mb-1"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none transition"
+              />
+            </div>
+
+            {/* Phone Input (Right Side) */}
+            <div className="flex flex-col">
+              <label
+                htmlFor="phone"
+                className="text-sm font-medium text-gray-700 mb-1"
+              >
+                Phone
+              </label>
+              <input
+                type="text"
+                id="phone"
+                placeholder="Enter phone number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none transition"
+              />
+            </div>
+
+            {/* Address Input (Full Width - Bottom) */}
+            {/* 'md:col-span-2' helps this span across both columns */}
+            <div className="flex flex-col md:col-span-2">
+              <label
+                htmlFor="address"
+                className="text-sm font-medium text-gray-700 mb-1"
+              >
+                Address
+              </label>
+              <textarea
+                id="address"
+                rows="3"
+                placeholder="Enter full address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none transition resize-none"
+              />
+            </div>
+          </div>
+        </div>
+
         <div className="bg-gray-50 p-8 flex flex-col md:flex-row justify-between items-center border-t border-gray-200 gap-4">
-          <button className="px-8 py-3 rounded-lg bg-accent border border-gray-300 text-white font-medium hover:bg-gray-100 hover:text-accent transition shadow-sm">
+          <button
+            onClick={submitOrder}
+            className="px-8 py-3 rounded-lg bg-accent border border-gray-300 text-white font-medium hover:bg-gray-100 hover:text-accent transition shadow-sm"
+          >
             Order Now
           </button>
 

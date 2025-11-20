@@ -22,7 +22,7 @@ export default function AdminProductsPage() {
   return (
     <div className="w-full flex justify-center p-10 relative bg-gradient-to-b from-primary to-white text-secondary">
       {loaded ? (
-        <div className="w-full overflow-x-auto">
+        <div className="w-full rounded-2xl overflow-x-auto">
           {" "}
           {/* Scrollable container */}
           <table
