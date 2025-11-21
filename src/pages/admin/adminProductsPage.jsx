@@ -20,7 +20,7 @@ export default function AdminProductsPage() {
   }, [loaded]);
 
   return (
-    <div className="w-full flex justify-center p-10 relative bg-gradient-to-b from-primary to-white text-secondary">
+    <div className="w-full flex justify-center p-10 relative bg-linear-to-b from-primary to-white text-secondary">
       {loaded ? (
         <div className="w-full rounded-2xl overflow-x-auto">
           {" "}
@@ -54,7 +54,7 @@ export default function AdminProductsPage() {
                     <td className="px-6 py-4">
                       <img
                         src={item.images[0]}
-                        className="w-[40px] h-[40px] rounded-full object-cover shadow-sm"
+                        className="w-10 h-10 rounded-full object-cover shadow-sm"
                       />
                     </td>
                     <td className="px-6 py-4">{item.productID}</td>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Loader from "../../components/loader.jsx";
+import ViewOrderInfo from "../../components/viewOrderInfo.jsx";
 
 export default function AdminOrdersPage() {
   const [orders, setOrders] = useState([]);
@@ -30,9 +31,7 @@ export default function AdminOrdersPage() {
             Order Management
           </h1>
 
-          {/* UPDATE: overflow-hidden wenuwata overflow-x-auto damma */}
           <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-x-auto">
-            {/* UPDATE: min-w-[800px] damma. Ethakota screen eka podi unath table eka akilenna, scroll wenawa */}
             <table className="w-full table-auto text-left border-collapse min-w-[800px]">
               <thead className="bg-gray-900 text-white text-xs uppercase tracking-wider">
                 <tr>
@@ -84,7 +83,7 @@ export default function AdminOrdersPage() {
                       </td>
 
                       <td className="px-6 py-4 text-center">
-                        {/* Actions button place */}
+                        <ViewOrderInfo order={order} />
                       </td>
                     </tr>
                   );
