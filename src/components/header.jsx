@@ -1,85 +1,115 @@
 import { BiShoppingBag } from "react-icons/bi";
-import { CiMenuBurger } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { LuListCollapse } from "react-icons/lu";
+import UserData from "./userData";
 
 export default function Header() {
   const [sideBarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <header className="w-full h-[100px] bg-accent flex relative">
-      <LuListCollapse
-        onClick={() => {
-          setSidebarOpen(true);
-        }}
-        className="text-white my-auto text-2xl ml-6 lg:hidden"
-      />
-      <img src="/logo.png" className="h-full " alt="logo" />
-      <div className="w-full h-full hidden lg:flex text-primary  justify-center items-center gap-[30px] text-xl">
-        <Link to="/">Home</Link>
-        <Link to="/products">Products</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
+    <header className="w-full h-[100px] bg-accent flex items-center justify-between px-6 relative z-50">
+      {/* --- LEFT SECTION: Mobile Menu & Logo --- */}
+      <div className="flex items-center gap-4">
+        <LuListCollapse
+          onClick={() => setSidebarOpen(true)}
+          className="text-white text-3xl cursor-pointer lg:hidden"
+        />
+        <img src="/logo.png" className="h-[60px] object-contain" alt="logo" />
       </div>
-      <Link
-        to="/cart"
-        className="absolute right-6 top-1/2 -translate-y-1/2 text-primary text-xl"
-      >
-        <BiShoppingBag size={30} />
-      </Link>
 
-      {sideBarOpen && (
-        <div className="fixed lg:hidden w-screen h-screen top-0 bg-black/50 z-20 transition-all duration-300 left-0">
-          <div className="w-[250px] h-screen flex flex-col border-2 relative">
-            <div className="absolute w-full h-full flex flex-col  bg-white left-[-250px] transform-flat translate-x-[250px] transition-transform duration-1000">
-              <div className="w-full h-[100px] bg-accent flex justify-center items-center">
-                <img src="/logo.png" className="h-full " alt="logo" />
-                <LuListCollapse
-                  onClick={() => {
-                    setSidebarOpen(false);
-                  }}
-                  className="text-white my-auto text-2xl ml-6 lg:hidden rotate-180"
-                />
-              </div>
-              <div className="w-full h-full flex flex-col text-xl text-secondary justify-start items-start  gap-6 mt-10 pl-6">
-                {/* Home */}
-                <a
-                  href="/"
-                  className="hover:text-secondary transition"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  Home
-                </a>
-                {/* Products */}
-                <a
-                  href="/products"
-                  className="hover:text-secondary transition"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  Products
-                </a>
-                {/* About */}
-                <a
-                  href="/about"
-                  className="hover:text-secondary transition"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  About
-                </a>
-                {/* Contact */}
-                <a
-                  href="/contact"
-                  className="hover:text-secondary transition"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  Contact
-                </a>
-              </div>
-            </div>
-          </div>
+      {/* --- CENTER SECTION: Desktop Navigation --- */}
+      <div className="hidden lg:flex text-primary items-center gap-[30px] text-xl absolute left-1/2 -translate-x-1/2">
+        <Link to="/" className="hover:text-white transition">
+          Home
+        </Link>
+        <Link to="/products" className="hover:text-white transition">
+          Products
+        </Link>
+        <Link to="/about" className="hover:text-white transition">
+          About
+        </Link>
+        <Link to="/contact" className="hover:text-white transition">
+          Contact
+        </Link>
+      </div>
+
+      {/* --- RIGHT SECTION: UserData & Cart --- */}
+      <div className="flex items-center gap-6">
+        {/* Desktop UserData (Hidden on Mobile) */}
+        <div className="hidden lg:block">
+          <UserData />
         </div>
-      )}
+
+        {/* Cart Icon */}
+        <Link to="/cart" className="text-primary text-xl">
+          <BiShoppingBag size={30} />
+        </Link>
+      </div>
+
+      {/* --- MOBILE SIDEBAR --- */}
+
+      {/* 1. Overlay (Backdrop) */}
+      <div
+        className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 lg:hidden ${
+          sideBarOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+        onClick={() => setSidebarOpen(false)}
+      ></div>
+
+      {/* 2. Sidebar Panel */}
+      <div
+        className={`fixed top-0 left-0 w-[280px] h-screen bg-white z-50 shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden ${
+          sideBarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        {/* Sidebar Header */}
+        <div className="w-full h-[100px] bg-accent flex justify-between items-center px-4">
+          <img src="/logo.png" className="h-[60px] object-contain" alt="logo" />
+          <LuListCollapse
+            onClick={() => setSidebarOpen(false)}
+            className="text-white text-3xl cursor-pointer rotate-180"
+          />
+        </div>
+
+        {/* Sidebar Links & User Data */}
+        <div className="flex flex-col text-xl text-secondary gap-6 mt-6 px-6 font-medium">
+          {/* User Data inside Sidebar (Mobile Only) */}
+          {/* Note: UserData expects dark background text, so we wrap it in accent color */}
+          <div className="w-full bg-accent rounded-xl p-3 flex justify-center shadow-md">
+            <UserData />
+          </div>
+
+          <Link
+            to="/"
+            className="hover:text-accent transition border-b pb-2"
+            onClick={() => setSidebarOpen(false)}
+          >
+            Home
+          </Link>
+          <Link
+            to="/products"
+            className="hover:text-accent transition border-b pb-2"
+            onClick={() => setSidebarOpen(false)}
+          >
+            Products
+          </Link>
+          <Link
+            to="/about"
+            className="hover:text-accent transition border-b pb-2"
+            onClick={() => setSidebarOpen(false)}
+          >
+            About
+          </Link>
+          <Link
+            to="/contact"
+            className="hover:text-accent transition border-b pb-2"
+            onClick={() => setSidebarOpen(false)}
+          >
+            Contact
+          </Link>
+        </div>
+      </div>
     </header>
   );
 }

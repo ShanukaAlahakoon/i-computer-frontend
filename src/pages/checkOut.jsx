@@ -68,9 +68,9 @@ export default function CheckOut() {
       });
   }
   return (
-    // Main Page Container: Light gray background for contrast, full viewport height
+    // Main Page Container
     <div className="w-full min-h-screen bg-gray-50 py-10 px-4 flex flex-col items-center">
-      {/* Cart Container: A unified white card with shadow */}
+      {/* Cart Container */}
       <div className="w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden">
         {/* Cart Items List */}
         <div className="flex flex-col divide-y divide-gray-100">
@@ -78,11 +78,14 @@ export default function CheckOut() {
             return (
               <div
                 key={item.productID}
-                className="flex flex-col md:flex-row items-center p-6 hover:bg-gray-50/50 transition-colors duration-200"
+                // Changed: Padding adjusted for mobile (p-4 vs p-6)
+                className="flex flex-col md:flex-row items-center p-4 md:p-6 hover:bg-gray-50/50 transition-colors duration-200"
               >
                 {/* Product Image & Details Section */}
-                <div className="flex flex-1 w-full md:w-auto items-center gap-6">
-                  <div className="w-24 h-24 shrink-0 bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center">
+                {/* Changed: Gap adjusted (gap-4 vs gap-6) */}
+                <div className="flex flex-1 w-full md:w-auto items-center gap-4 md:gap-6">
+                  {/* Changed: Image size adjusted (w-20 vs w-24) */}
+                  <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center">
                     <img
                       src={item.image}
                       className="h-full w-full object-contain"
@@ -92,12 +95,12 @@ export default function CheckOut() {
 
                   <div className="flex flex-col gap-1">
                     <div className="relative group w-fit">
-                      <h1 className="text-lg font-bold text-gray-800 leading-tight cursor-help">
+                      {/* Changed: Text size adjusted */}
+                      <h1 className="text-base md:text-lg font-bold text-gray-800 leading-tight cursor-help">
                         {item.name.length > 20
                           ? item.name.substring(0, 20) + "..."
                           : item.name}
                       </h1>
-                      {/* Tooltip: Improved styling */}
                       <span className="pointer-events-none absolute opacity-0 group-hover:opacity-100 transition-opacity bg-gray-900 text-white text-xs rounded py-1 px-2 bottom-full left-0 mb-2 whitespace-nowrap z-10 shadow-lg">
                         {item.name}
                         <svg
@@ -124,7 +127,7 @@ export default function CheckOut() {
                           LKR. {item.labeledPrice.toFixed(2)}
                         </h1>
                       )}
-                      <h1 className="text-md font-semibold text-emerald-600">
+                      <h1 className="text-sm md:text-md font-semibold text-emerald-600">
                         LKR. {item.price.toFixed(2)}
                       </h1>
                     </div>
@@ -175,15 +178,14 @@ export default function CheckOut() {
           })}
         </div>
 
-        {/* Footer / Checkout Section */}
-        <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100">
+        {/* Shipping Information Section */}
+        {/* Changed: Padding adjusted (p-6 vs p-8) */}
+        <div className="bg-white p-6 md:p-8 rounded-xl shadow-md border border-gray-100">
           <h2 className="text-xl font-bold text-gray-800 mb-6">
             Shipping Information
           </h2>
 
-          {/* Grid Layout Starts Here */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Name Input (Left Side) */}
             <div className="flex flex-col">
               <label
                 htmlFor="name"
@@ -201,7 +203,6 @@ export default function CheckOut() {
               />
             </div>
 
-            {/* Phone Input (Right Side) */}
             <div className="flex flex-col">
               <label
                 htmlFor="phone"
@@ -219,8 +220,6 @@ export default function CheckOut() {
               />
             </div>
 
-            {/* Address Input (Full Width - Bottom) */}
-            {/* 'md:col-span-2' helps this span across both columns */}
             <div className="flex flex-col md:col-span-2">
               <label
                 htmlFor="address"
@@ -240,17 +239,21 @@ export default function CheckOut() {
           </div>
         </div>
 
-        <div className="bg-gray-50 p-8 flex flex-col md:flex-row justify-between items-center border-t border-gray-200 gap-4">
+        {/* Footer / Checkout Section */}
+        {/* Changed: flex-col-reverse for mobile (Total on top, Order Button on bottom) */}
+        <div className="bg-gray-50 p-6 md:p-8 flex flex-col-reverse md:flex-row justify-between items-center border-t border-gray-200 gap-4">
           <button
             onClick={submitOrder}
-            className="px-8 py-3 rounded-lg bg-accent border border-gray-300 text-white font-medium hover:bg-gray-100 hover:text-accent transition shadow-sm"
+            // Changed: w-full for mobile to be easily clickable
+            className="w-full md:w-auto px-8 py-3 rounded-lg bg-accent border border-gray-300 text-white font-medium hover:bg-gray-100 hover:text-accent transition shadow-sm"
           >
             Order Now
           </button>
 
-          <div className="flex items-center gap-6">
+          {/* Changed: w-full and justify-between for mobile */}
+          <div className="w-full md:w-auto flex justify-between md:justify-start items-center gap-6">
             <span className="text-gray-500 font-medium">Subtotal</span>
-            <span className="text-2xl font-bold text-gray-900">
+            <span className="text-xl md:text-2xl font-bold text-gray-900">
               LKR. {calculateTotal().toFixed(2)}
             </span>
           </div>
