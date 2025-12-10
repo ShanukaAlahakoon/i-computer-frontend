@@ -6,6 +6,7 @@ import ProductCard from "../components/productCard";
 export default function ProductPage() {
   const [products, setProducts] = useState([]);
   const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
     if (!loaded) {
       axios.get(import.meta.env.VITE_BACKEND_URL + "/products").then((res) => {
@@ -25,7 +26,39 @@ export default function ProductPage() {
           <Loader />
         </div>
       ) : (
-        <div className="w-full flex justify-center p-4 flex-row flex-wrap gap-4">
+        <div className="w-full flex justify-center p-4 flex-row flex-wrap gap-4 ">
+          <div className="w-full h-[100px] sticky top-0 flex bg-white justify-center items-center">
+            <input
+              type="text"
+              placeholder="Search products..."
+              className="w-full max-w-2xl border border-gray-300 rounded-lg px-4 py-2 shadow-sm focus:outline-none  focus:ring-2 focus:ring-blue-500"
+              onChange={async (e) => {
+                if (e.target.value == "") {
+                  setLoaded(false);
+                  await axios
+                    .get(import.meta.env.VITE_BACKEND_URL + "/products")
+                    .then((res) => {
+                      console.log(res.data);
+                      setProducts(res.data.products);
+                    });
+                  setLoaded(true);
+                } else {
+                  await axios
+                    .get(
+                      import.meta.env.VITE_BACKEND_URL +
+                        "/products/search/" +
+                        e.target.value
+                    )
+                    .then((res) => {
+                      console.log(res.data);
+                      setProducts(res.data.products);
+                    });
+                  setLoaded(true);
+                }
+              }}
+            />
+          </div>
+
           {products.map((item) => {
             return <ProductCard key={item.productID} product={item} />;
           })}

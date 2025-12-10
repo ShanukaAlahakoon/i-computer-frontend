@@ -5,6 +5,7 @@ import { MdOutlineRateReview } from "react-icons/md";
 import AdminProductsPage from "./admin/adminProductsPage";
 import AdminUpdateProductPage from "./admin/adminUpdateProductPage";
 import AdminAddProductPage from "./admin/adminAddProductPage";
+import AdminUsersPage from "./admin/adminUsersPage";
 import AdminOrdersPage from "./admin/adminOrdersPage";
 import { use } from "react";
 import { useState, useEffect } from "react";
@@ -85,7 +86,7 @@ export default function AdminPage() {
                 path="/update-product/:id"
                 element={<AdminUpdateProductPage />}
               />
-              <Route path="/users" element={<h1>Users</h1>} />
+              <Route path="/users" element={<AdminUsersPage />} />
               <Route path="/reviews" element={<h1>Reviews</h1>} />
             </Routes>
           </div>

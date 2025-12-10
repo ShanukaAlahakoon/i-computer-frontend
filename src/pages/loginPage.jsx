@@ -95,7 +95,7 @@ export default function LoginPage() {
 
       {/* Right Side: Login Form */}
       <div className="w-full md:w-1/2 h-full flex justify-center items-center p-4">
-        <div className="w-full max-w-[450px] h-auto backdrop-blur-lg shadow-2xl rounded-2xl flex flex-col justify-center items-center p-[20px] md:p-[30px] border border-white/10 my-10 md:my-0">
+        <div className="w-full max-w-[450px] h-auto backdrop-blur-lg shadow-2xl rounded-2xl flex flex-col justify-center items-center p-5 md:p-[30px] border border-white/10 my-10 md:my-0">
           <h1 className="text-[30px] md:text-[40px] font-bold mb-5 text-white text-shadow-white ">
             Login
           </h1>
@@ -117,7 +117,7 @@ export default function LoginPage() {
           />
           <p className="text-white not-italic text-right w-full mb-5 text-sm md:text-base">
             Forget your password?
-            <Link to="/register" className="text-gold italic ml-1">
+            <Link to="/forgot-password" className="text-gold italic ml-1">
               Reset here
             </Link>
           </p>

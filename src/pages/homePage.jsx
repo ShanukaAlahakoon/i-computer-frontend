@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import ProductPage from "./productPage.jsx";
 import Cart from "./cart.jsx";
 import ProductOverview from "./productOverview.jsx";
+import OrdersPage from "./ordersPage.jsx";
 import CheckOut from "./checkOut.jsx";
 
 export default function HomePage() {
@@ -18,6 +19,7 @@ export default function HomePage() {
           <Route path="/overview/:productID" element={<ProductOverview />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<CheckOut />} />
+          <Route path="/orders" element={<OrdersPage />} />
           <Route path="/*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </div>

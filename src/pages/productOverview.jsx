@@ -34,16 +34,12 @@ export default function ProductOverview() {
         <h1 className="text-center mt-10">Failed to load product details.</h1>
       )}
       {status == "success" && (
-        // Changed: flex-col for mobile, lg:flex-row for desktop
         <div className="w-full min-h-[calc(100vh-100px)] flex flex-col lg:flex-row">
-          {/* Changed: w-full for mobile, lg:w-1/2 for desktop. Added justify-center for alignment */}
           <div className="w-full lg:w-1/2 h-full flex flex-col p-4 lg:p-6 items-center justify-center">
             <ImageSlider images={product.images} />
           </div>
 
-          {/* Changed: w-full for mobile, lg:w-1/2 for desktop */}
           <div className="w-full lg:w-1/2 h-full flex flex-col p-6 lg:p-8 gap-6 lg:gap-8">
-            {/* Changed: text-3xl for mobile to prevent overflow, text-4xl for desktop */}
             <h1 className="text-3xl lg:text-4xl font-extrabold text-gray-800">
               {product.name}
             </h1>
@@ -53,6 +49,15 @@ export default function ProductOverview() {
             <h3 className="text-lg text-gray-500 flex items-center">
               {product.category}
             </h3>
+
+            {/* Alternative names */}
+            {product.altNames && product.altNames.length > 0 && (
+              <div className="flex flex-col">
+                <h4 className="text-md text-gray-700 font-semibold mb-1">
+                  {product.altNames.join(" | ")}
+                </h4>
+              </div>
+            )}
 
             <p className="text-base text-gray-700 text-justify h-32 overflow-y-auto mb-4 scrollbar-thin">
               {product.description}

@@ -26,7 +26,6 @@ export default function UserData() {
   return (
     <div className="flex items-center">
       {user ? (
-        // Changed: w-[150px] removed. Added flex, items-center, gap.
         <div className="flex flex-row items-center gap-2">
           <img
             src={user.image}
