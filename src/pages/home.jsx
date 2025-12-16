@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaMicrochip, FaPhoneAlt } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaGamepad,
+  FaMicrochip,
+  FaPhoneAlt,
+} from "react-icons/fa";
 
 export default function Home() {
   return (
+    // FIX 1: "overflow-x-hidden" සහ "w-full" දැම්මා. මේකෙන් දකුණු පැත්තේ සුදු ඉඩ එන එක නවතිනවා.
     <div className="w-full h-[calc(100vh-100px)] relative flex items-center justify-center overflow-hidden bg-black">
+      {/* Background Image Layer */}
       <div className="absolute inset-0 w-full h-full">
         <img
           src="/home.jpg"
@@ -12,27 +19,34 @@ export default function Home() {
         />
       </div>
 
-      <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/50 to-black/80 z-10"></div>
+      {/* Overlay Layer */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80 z-10"></div>
 
-      <div className="relative z-20 max-w-6xl px-6 w-full flex flex-col items-center text-center">
-        <div className="mb-4 animate-fade-in-down">
-          <h2 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 tracking-wider uppercase drop-shadow-md">
-            Welcome to i-Computers
+      {/* Content Layer */}
+      <div className="relative z-20 w-full max-w-6xl px-4 flex flex-col items-center text-center">
+        {/* Shop Name Badge (Mobile Fix) */}
+        <div className="mb-4 animate-fade-in-down w-full px-2">
+          {/* FIX 2: Text size එක Mobile වලදී පොඩි කරා (text-2xl) PC වලදී ලොකු කරා (md:text-5xl) */}
+          <h2 className="text-2xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 tracking-wider uppercase drop-shadow-md">
+            Welcome to <span className="whitespace-nowrap">i-Computers</span>
           </h2>
         </div>
 
-        <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-900/20 backdrop-blur-md text-cyan-300 text-xs md:text-sm font-semibold tracking-widest uppercase animate-fade-in-down delay-100">
+        {/* Small Tagline */}
+        <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-900/20 backdrop-blur-md text-cyan-300 text-[10px] md:text-sm font-semibold tracking-widest uppercase animate-fade-in-down delay-100">
           <FaMicrochip /> The Ultimate Tech Hub
         </div>
 
+        {/* Main Headline */}
         <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-white tracking-tight leading-tight mb-4 drop-shadow-2xl animate-fade-in-up">
           LEVEL UP <br />
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 filter drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 filter drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
             YOUR REALITY
           </span>
         </h1>
 
-        <p className="text-gray-300 text-sm md:text-xl max-w-4xl mb-8 font-light leading-relaxed animate-fade-in-up delay-200">
+        {/* Description */}
+        <p className="text-gray-300 text-sm md:text-xl max-w-3xl mb-8 font-light leading-relaxed animate-fade-in-up delay-200 px-4">
           Discover the best custom PC builds, laptops, and gaming accessories at{" "}
           <span className="text-cyan-400 font-semibold whitespace-nowrap">
             i-Computers
@@ -40,12 +54,13 @@ export default function Home() {
           .
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto animate-fade-in-up delay-300">
+        {/* Action Buttons */}
+        <div className="flex flex-col w-full px-8 sm:px-0 sm:flex-row gap-4 sm:w-auto animate-fade-in-up delay-300 justify-center items-center">
           <Link
             to="/products"
-            className="group relative px-8 py-3 bg-cyan-600 text-white font-bold rounded-full overflow-hidden shadow-[0_0_20px_rgba(8,145,178,0.5)] transition-all hover:scale-105"
+            className="w-full sm:w-auto group relative px-8 py-3 bg-cyan-600 text-white font-bold rounded-full overflow-hidden shadow-[0_0_20px_rgba(8,145,178,0.5)] transition-all hover:scale-105"
           >
-            <span className="absolute inset-0 w-full h-full bg-linear-to-r from-cyan-400 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             <span className="relative flex items-center justify-center gap-2">
               Start Shopping <FaArrowRight />
             </span>
@@ -53,13 +68,14 @@ export default function Home() {
 
           <Link
             to="/contact"
-            className="px-8 py-3 bg-white/5 backdrop-blur-md border border-white/20 text-white font-bold rounded-full hover:bg-white/10 hover:border-cyan-400/50 transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-8 py-3 bg-white/5 backdrop-blur-md border border-white/20 text-white font-bold rounded-full hover:bg-white/10 hover:border-cyan-400/50 transition-all flex items-center justify-center gap-2"
           >
             <FaPhoneAlt /> Contact Us
           </Link>
         </div>
       </div>
 
+      {/* Styles */}
       <style>{`
         @keyframes zoomIn {
           0% { transform: scale(1); }
