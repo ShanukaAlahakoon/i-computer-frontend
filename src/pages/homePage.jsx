@@ -9,7 +9,7 @@ import Home from "./home.jsx";
 
 export default function HomePage() {
   return (
-    <div className="w-full h-full overflow-y-scroll max-h-full">
+    <div className="w-full h-screen overflow-y-scroll overflow-x-hidden max-h-full">
       <Header />
       <div className="w-full min-h-[calc(100%-100px)]">
         <Routes>
