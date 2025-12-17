@@ -7,18 +7,71 @@
   --color-gold: #e29816;
 }
 
-/* Customize the entire scrollbar */
-::-webkit-scrollbar {
-  width: 8px; /* Set the width of the scrollbar */
+* {
+  box-sizing: border-box;
 }
 
-/* Customize the scrollbar track (background) */
-::-webkit-scrollbar-track {
-  background-color: transparent; /* Tailwind color equivalent: bg-gray-100 */
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #0a0a0a;
+  color: #f7faff;
 }
 
-/* Customize the scrollbar thumb (draggable part) */
-::-webkit-scrollbar-thumb {
-  background-color: #888; /* Tailwind color equivalent: bg-gray-500 */
-  border-radius: 4px; /* Add rounded corners */
+@media (max-width: 768px) {
+  /* For Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+    background: transparent;
+  }
+
+  /* For IE, Edge and Firefox */
+  * {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+@media (min-width: 769px) {
+  /* Scrollbar Width */
+  ::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: #111827;
+    border-left: 1px solid #333;
+  }
+
+  /* Thumb */
+  ::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    border: 2px solid #111827;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #e29816;
+  }
+
+  ::-webkit-scrollbar-button {
+    display: none;
+    height: 16px;
+    width: 16px;
+    background-color: #1f2937;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  ::-webkit-scrollbar-button:vertical:start:decrement {
+    display: block;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%23e29816' viewBox='0 0 16 16'><path d='M8 4l-8 8h16z'/></svg>");
+  }
+
+  ::-webkit-scrollbar-button:vertical:end:increment {
+    display: block;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%23e29816' viewBox='0 0 16 16'><path d='M8 12l8-8H0z'/></svg>");
+  }
 }
