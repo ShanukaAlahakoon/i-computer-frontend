@@ -20,6 +20,7 @@ export default function LoginPage() {
         })
         .then((res) => {
           localStorage.setItem("token", res.data.token);
+          localStorage.setItem("user", JSON.stringify(res.data.user));
           if (res.data.role === "admin") {
             navigate("/admin");
           } else {
@@ -58,6 +59,7 @@ export default function LoginPage() {
       console.log("Response:", res);
 
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
       const token = localStorage.getItem("token");
 
       if (res.data.role === "admin") {
