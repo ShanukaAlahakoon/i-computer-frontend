@@ -84,18 +84,18 @@ export default function AdminAddProductPage() {
   }
 
   return (
-    <div className=" w-full  flex justify-center p-[50px]    p-[50px] ">
-      <div className=" w-[1000px] bg-accent/70 p-[40px] rounded-2xl">
-        <h1 className=" text-xl  mb-[20px] text-primary flex items-center gap-[10px]  ">
+    <div className=" w-full  flex justify-center p-[50px]     ">
+      <div className=" w-[1000px] bg-accent/70 p-10 rounded-2xl">
+        <h1 className=" text-xl  mb-5 text-primary flex items-center gap-2.5  ">
           <AiOutlineProduct />
           Add New Product
         </h1>
-        <div className=" w-full bg-white p-[20px] flex flex-wrap justify-between rounded-xl shadow-2xl ">
-          <div className=" my-[10px] w-[40%]">
+        <div className=" w-full bg-white p-5 flex flex-wrap justify-between rounded-xl shadow-2xl ">
+          <div className=" my-2.5 w-[40%]">
             <label>Product ID</label>
             <input
               type="text"
-              className=" w-full h-[40px] border-[2px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-[20px]  border border-accent shadow-2xl "
+              className=" w-full h-10 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-5  border-accent shadow-2xl "
               value={productID}
               onChange={(e) => {
                 setProductID(e.target.value);
@@ -105,22 +105,22 @@ export default function AdminAddProductPage() {
               Provide a unique product ID
             </p>
           </div>
-          <div className=" my-[10px] w-[40%]">
+          <div className=" my-2.5 w-[40%]">
             <label>Name</label>
             <input
               type="text"
-              className=" w-full h-[40px] border-[2px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-[20px]  border border-accent shadow-2xl "
+              className=" w-full h-10 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-5  border-accent shadow-2xl "
               value={name}
               onChange={(e) => {
                 setName(e.target.value);
               }}
             />
           </div>
-          <div className=" my-[10px] w-full ">
+          <div className=" my-2.5 w-full ">
             <label>Alternative Names</label>
             <input
               type="text"
-              className=" w-full h-[40px] border-[2px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-[20px]  border border-accent shadow-2xl "
+              className=" w-full h-10 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-5  border-accent shadow-2xl "
               value={altNames}
               onChange={(e) => {
                 setAltNames(e.target.value);
@@ -130,55 +130,55 @@ export default function AdminAddProductPage() {
               Separate multiple names with commas
             </p>
           </div>
-          <div className=" my-[10px] w-full ">
+          <div className=" my-2.5 w-full ">
             <label>Description</label>
             <textarea
-              className=" w-full h-[100px] border-[2px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-[20px] py-[10px]  border border-accent shadow-2xl "
+              className=" w-full h-[100px] border rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-5 py-2.5  border-accent shadow-2xl "
               value={description}
               onChange={(e) => {
                 setDescription(e.target.value);
               }}
             />
           </div>
-          <div className=" my-[10px] w-[40%]">
+          <div className=" my-2.5 w-[40%]">
             <label>Price</label>
             <input
               type="number"
-              className=" w-full h-[40px] border-[2px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-[20px]  border border-accent shadow-2xl "
+              className=" w-full h-10 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-5  border-accent shadow-2xl "
               value={price}
               onChange={(e) => {
                 setPrice(e.target.value);
               }}
             />
           </div>
-          <div className=" my-[10px] w-[40%]">
+          <div className=" my-2.5 w-[40%]">
             <label>labeled Price</label>
             <input
               type="number"
-              className=" w-full h-[40px] border-[2px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-[20px]  border border-accent shadow-2xl "
+              className=" w-full h-10 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-5  border-accent shadow-2xl "
               value={labeledPrice}
               onChange={(e) => {
                 setLabeledPrice(e.target.value);
               }}
             />
           </div>
-          <div className=" my-[10px] w-full ">
+          <div className=" my-2.5 w-full ">
             <label>Images</label>
             <input
               type="file"
               multiple={true}
-              className=" w-full h-[40px] border-[2px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-[20px]  border border-accent shadow-2xl "
+              className=" w-full h-10 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-5  border-accent shadow-2xl "
               onChange={(e) => {
                 setFiles(e.target.files);
               }}
             />
           </div>
-          <div className=" my-[10px] flex flex-col w-[30%] ">
+          <div className=" my-2.5 flex flex-col w-[30%] ">
             <label>Category</label>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className=" w-full h-[40px] border-[2px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-[20px]  border border-accent shadow-2xl "
+              className=" w-full h-10 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-5  border-accent shadow-2xl "
             >
               <option value="CPU">CPU</option>
               <option value="Graphic Card">Graphic Card</option>
@@ -196,45 +196,45 @@ export default function AdminAddProductPage() {
               <option value="Other">Other</option>
             </select>
           </div>
-          <div className=" my-[10px] w-[30%] ">
+          <div className=" my-2.5 w-[30%] ">
             <label>Brand</label>
             <input
               type="text"
-              className=" w-full h-[40px] border-[2px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-[20px]  border border-accent shadow-2xl "
+              className=" w-full h-10 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-5  border-accent shadow-2xl "
               value={brand}
               onChange={(e) => {
                 setBrand(e.target.value);
               }}
             />
           </div>
-          <div className=" my-[10px] w-[30%]">
+          <div className=" my-2.5 w-[30%]">
             <label>Model</label>
             <input
               type="text"
-              className=" w-full h-[40px] border-[2px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-[20px]  border border-accent shadow-2xl "
+              className=" w-full h-10 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-5  border-accent shadow-2xl "
               value={model}
               onChange={(e) => {
                 setModel(e.target.value);
               }}
             />
           </div>
-          <div className=" my-[10px] w-[40%]">
+          <div className=" my-2.5 w-[40%]">
             <label>Stock</label>
             <input
               type="text"
-              className=" w-full h-[40px] border-[2px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-[20px]  border border-accent shadow-2xl "
+              className=" w-full h-10 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-5  border-accent shadow-2xl "
               value={stock}
               onChange={(e) => {
                 setStock(e.target.value);
               }}
             />
           </div>
-          <div className=" my-[10px] flex flex-col w-[40%]  ">
+          <div className=" my-2.5 flex flex-col w-[40%]  ">
             <label>Availability</label>
             <select
               value={isAvailable}
               onChange={(e) => setIsAvailable(e.target.value)}
-              className=" w-full h-[40px] border-[2px] rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-[20px]  border border-accent shadow-2xl "
+              className=" w-full h-10 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent px-5  border-accent shadow-2xl "
             >
               <option value={true}>Yes</option>
               <option value={false}>No</option>
@@ -243,13 +243,13 @@ export default function AdminAddProductPage() {
 
           <Link
             to="/admin/products"
-            className="w-[49%] h-[50px] bg-red-500 text-white font-bold  rounded-2xl flex justify-center items-center hover:bg-red-700 border-[2px]  mt-[20px]"
+            className="w-[49%] h-12 bg-red-500 text-white font-bold  rounded-2xl flex justify-center items-center hover:bg-red-700 border-2  mt-5"
           >
             Cancel
           </Link>
           <button
             onClick={addProduct}
-            className=" w-[49%] h-[50px] border-[2px] bg-accent rounded-2xl text-white font-bold focus:outline-none focus:ring-2 focus:ring-accent px-[20px]  mt-[20px]  border hover:bg-transparent hover:text-accent border-accent shadow-2xl "
+            className=" w-[49%] h-12 border-2 bg-accent rounded-2xl text-white font-bold focus:outline-none focus:ring-2 focus:ring-accent px-5  mt-5   hover:bg-transparent hover:text-accent border-accent shadow-2xl "
           >
             Add Product
           </button>

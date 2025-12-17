@@ -1,5 +1,5 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser"; // 1. EmailJS import කරන්න
+import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
 import {
   FaPhoneAlt,
@@ -25,27 +25,25 @@ export default function Contact() {
     e.preventDefault();
     setLoading(true);
 
-    // දින සහ වේලාව ලබා ගැනීම
     const currentTime = new Date().toLocaleString("en-US", {
       dateStyle: "medium",
       timeStyle: "short",
     });
 
-    // EmailJS එකට යවන දත්ත (Template එකේ {{variable}} වලට ගැලපෙන්න ඕනේ)
     const templateParams = {
-      name: formData.name, // HTML එකේ {{name}} සඳහා
-      email: formData.email, // HTML එකේ {{email}} සඳහා
-      subject: formData.subject, // HTML එකේ {{subject}} සඳහා
-      message: formData.message, // HTML එකේ {{message}} සඳහා
-      time: currentTime, // HTML එකේ {{time}} සඳහා (අලුතින් එකතු කළා)
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      time: currentTime,
     };
 
     emailjs
       .send(
-        "service_i3nu0jg", // ඔයාගේ Service ID එක
-        "template_yl4bl6w", // ඔයාගේ Template ID එක
+        "service_i3nu0jg",
+        "template_yl4bl6w",
         templateParams,
-        "kX6XZ7Tj1d2XkJvRi" // ඔයාගේ Public Key එක
+        "kX6XZ7Tj1d2XkJvRi"
       )
       .then(
         (response) => {
@@ -63,9 +61,7 @@ export default function Contact() {
   };
 
   return (
-    // UI එක ඔයා කලින් ඉල්ලපු Light Theme එකටම තියලා තියෙන්නේ
     <div className="w-full min-h-screen bg-primary text-secondary pt-[50px] pb-20 px-4 md:px-6">
-      {/* Hero Title */}
       <div className="max-w-7xl mx-auto text-center mb-16">
         <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tight mb-4 text-secondary">
           Get in <span className="text-gold">Touch</span>
@@ -77,7 +73,6 @@ export default function Contact() {
       </div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Left Side: Contact Info */}
         <div className="flex flex-col gap-8">
           <ContactInfoCard
             icon={<FaPhoneAlt />}
