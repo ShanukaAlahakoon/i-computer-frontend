@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Loader from "../components/loader.jsx";
 import ViewOrderInfoCustomer from "../components/viewOrderInfoCustomer.jsx";
+import { Link } from "react-router-dom";
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState([]);
@@ -27,9 +28,32 @@ export default function OrdersPage() {
     <div className="w-full h-screen flex justify-center bg-gray-50 p-10 overflow-y-auto">
       {loaded ? (
         <div className="w-full max-w-7xl">
-          <h1 className="text-3xl font-bold text-gray-800 mb-6">
-            Order Management
-          </h1>
+          <div className="flex flex-col md:flex-row justify-between items-center mb-6">
+            <h1 className="text-3xl font-bold text-gray-800">
+              Order Management
+            </h1>
+
+            <Link
+              to="/products"
+              className="flex items-center gap-2 text-gray-500 hover:text-accent transition font-bold text-lg mt-4 md:mt-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2.5}
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+                />
+              </svg>
+              Shop More
+            </Link>
+          </div>
 
           <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-x-auto">
             <table className="w-full table-auto text-left border-collapse min-w-[800px]">
@@ -92,8 +116,14 @@ export default function OrdersPage() {
             </table>
 
             {orders.length === 0 && (
-              <div className="p-8 text-center text-gray-500">
-                No orders found.
+              <div className="p-8 text-center text-gray-500 flex flex-col items-center">
+                <p className="mb-4">No orders found.</p>
+                <Link
+                  to="/products"
+                  className="px-6 py-2 bg-accent text-white rounded-lg hover:bg-accent/80 transition"
+                >
+                  Start Shopping
+                </Link>
               </div>
             )}
           </div>

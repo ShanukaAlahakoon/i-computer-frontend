@@ -7,23 +7,49 @@ export default function Cart() {
   const [cart, setCart] = useState(getCart());
 
   return (
-    // Main Page Container
     <div className="w-full min-h-screen bg-gray-50 py-10 px-4 flex flex-col items-center">
-      {/* Cart Container */}
       <div className="w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="p-6 md:p-8 border-b border-gray-200 flex justify-between items-center bg-white">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
+            Shopping Cart
+          </h1>
+          <Link
+            to="/products"
+            className="flex items-center gap-2 text-gray-500 hover:text-accent transition font-bold text-md md:text-lg"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2.5}
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+              />
+            </svg>
+            Shop More
+          </Link>
+        </div>
+
         {/* Cart Items List */}
         <div className="flex flex-col divide-y divide-gray-100">
+          {cart.length === 0 && (
+            <div className="p-10 text-center text-gray-500 text-lg">
+              Your cart is empty. Start shopping!
+            </div>
+          )}
+
           {cart.map((item, index) => {
             return (
               <div
                 key={index}
-                // Changed: Added padding adjustment for mobile (p-4 vs p-6)
                 className="flex flex-col md:flex-row items-center p-4 md:p-6 hover:bg-gray-50/50 transition-colors duration-200"
               >
-                {/* Product Image & Details Section */}
-                {/* Changed: Added gap adjustment (gap-4 vs gap-6) */}
                 <div className="flex flex-1 w-full md:w-auto items-center gap-4 md:gap-6">
-                  {/* Changed: Smaller image container on mobile (w-20 vs w-24) */}
                   <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center">
                     <img
                       src={item.image}
@@ -34,7 +60,6 @@ export default function Cart() {
 
                   <div className="flex flex-col gap-1">
                     <div className="relative group w-fit">
-                      {/* Changed: Text size adjustment */}
                       <h1 className="text-base md:text-lg font-bold text-gray-800 leading-tight cursor-help">
                         {item.name.length > 20
                           ? item.name.substring(0, 20) + "..."
@@ -76,7 +101,6 @@ export default function Cart() {
 
                 {/* Controls & Subtotal Section */}
                 <div className="flex w-full md:w-1/2 justify-between items-center mt-4 md:mt-0 md:pl-4">
-                  {/* Quantity Controls */}
                   <div className="flex flex-col items-center justify-center bg-gray-100 rounded-lg px-2 py-1">
                     <button
                       className="p-1 text-gray-500 hover:text-accent transition active:scale-90"
@@ -116,18 +140,15 @@ export default function Cart() {
         </div>
 
         {/* Footer / Checkout Section */}
-        {/* Changed: flex-col-reverse on mobile to put Price on top, Button on bottom */}
         <div className="bg-gray-50 p-6 md:p-8 flex flex-col-reverse md:flex-row justify-between items-center border-t border-gray-200 gap-4">
           <Link
             to="/checkout"
             state={cart}
-            // Changed: w-full on mobile to make button easier to tap
             className="w-full md:w-auto text-center px-8 py-3 rounded-lg bg-white border border-gray-300 text-gray-700 font-medium hover:bg-gray-100 hover:text-accent transition shadow-sm"
           >
             Checkout
           </Link>
 
-          {/* Changed: w-full and justify-between on mobile to align text properly */}
           <div className="w-full md:w-auto flex justify-between md:justify-start items-center gap-6">
             <span className="text-gray-500 font-medium">Subtotal</span>
             <span className="text-xl md:text-2xl font-bold text-gray-900">

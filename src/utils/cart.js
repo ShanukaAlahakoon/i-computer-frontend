@@ -1,23 +1,21 @@
 import toast from "react-hot-toast";
 
-// 1. මේක අලුතින් එකතු කරන්න: Cart එකේ නම (Key) තීරණය කරන function එක
 const getCartKey = () => {
-  const userString = localStorage.getItem("user"); // ඔයාගේ user data තියෙන key එක "user" නම්
+  const userString = localStorage.getItem("user");
   if (userString) {
     try {
       const user = JSON.parse(userString);
-      // User කෙනෙක් ඉන්නවා නම් එයාගේ email එකත් එක්ක නම හදනවා
+
       return `cart_${user.email}`;
     } catch (e) {
-      return "cart"; // JSON error ආවොත් සාමාන්‍ය විදියට
+      return "cart";
     }
   }
-  // User කෙනෙක් නැත්නම් (Guest), සාමාන්‍ය "cart" එක පාවිච්චි කරනවා
   return "cart";
 };
 
 export function getCart() {
-  const key = getCartKey(); // Dynamic Key එක ගන්නවා
+  const key = getCartKey();
   const cartString = localStorage.getItem(key);
 
   if (cartString == null) {
@@ -28,8 +26,8 @@ export function getCart() {
 }
 
 export function addToCart(product, quantity) {
-  const cart = getCart(); // දැන් මේකෙන් එන්නේ අදාළ User ගේ Cart එක
-  const key = getCartKey(); // Save කරන්න ඕනේ Key එක ගන්නවා
+  const cart = getCart();
+  const key = getCartKey();
 
   const index = cart.findIndex((item) => item.productID == product.productID);
 
@@ -55,14 +53,13 @@ export function addToCart(product, quantity) {
     }
   }
 
-  // අදාළ User ගේ නමින්ම Save කරනවා
   const cartString = JSON.stringify(cart);
   localStorage.setItem(key, cartString);
 }
 
 export function emptyCart() {
   const key = getCartKey();
-  localStorage.removeItem(key); // අදාළ User ගේ Cart එක විතරක් මකනවා
+  localStorage.removeItem(key);
 }
 
 export function getCartTotal() {
@@ -73,4 +70,10 @@ export function getCartTotal() {
   });
 
   return total;
+}
+
+export function clearCart() {
+  const key = getCartKey();
+
+  localStorage.removeItem(key);
 }

@@ -23,7 +23,6 @@ export default function AdminProductsPage() {
   return (
     <div className="w-full h-screen flex justify-center bg-gray-50 p-4 overflow-y-auto relative">
       {loaded ? (
-        // Added pb-20 to ensure content isn't hidden behind the floating button or cut off at screen edge
         <div className="w-full pb-20">
           <h1 className="text-2xl font-bold text-gray-800 mb-4">
             Product Management
@@ -57,7 +56,6 @@ export default function AdminProductsPage() {
                 </thead>
                 <tbody className="divide-y divide-gray-200 text-gray-700 text-sm">
                   {products.map((item, index) => {
-                    // Check if it's the last row
                     const isLast = index === products.length - 1;
                     const rowClass = isLast ? "" : "border-b border-gray-200";
 

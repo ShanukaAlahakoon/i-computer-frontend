@@ -66,7 +66,6 @@ export default function RegisterPage() {
       </div>
 
       {/* Right Side: Form */}
-      {/* Mobile waladi pahala kotasa, Desktop waladi dakunu pattha */}
       <div className="w-full md:w-1/2 h-full flex justify-center items-center p-5 md:p-0 my-auto">
         <div className="w-full max-w-[450px] h-auto backdrop-blur-lg shadow-2xl rounded-2xl flex flex-col justify-center items-center p-[30px] border border-white/10">
           <h1 className="text-[40px] font-bold mb-5 text-white text-shadow-white">
