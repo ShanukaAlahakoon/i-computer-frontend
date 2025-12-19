@@ -173,7 +173,6 @@ export default function ViewOrderInfoCustomer({ order }) {
               </div>
             </div>
 
-            {/* Address Block (Using Primary Theme Color background) */}
             <div className="bg-primary p-4 rounded-lg border border-gray-100">
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
                 Delivery Address
@@ -182,8 +181,6 @@ export default function ViewOrderInfoCustomer({ order }) {
                 {order.address}
               </p>
             </div>
-
-            {/* Notes Block (Optional) - Highlighted with Gold theme color */}
 
             <div className=" p-4 rounded-lg border border-gold/20">
               <p className="text-xs font-semibold text-gold uppercase tracking-wider mb-1">
@@ -217,7 +214,6 @@ export default function ViewOrderInfoCustomer({ order }) {
                       />
                     </div>
 
-                    {/* Item Details */}
                     <div className="grow flex flex-col sm:flex-row sm:justify-between sm:items-start">
                       <div>
                         <p className="font-semibold text-secondary line-clamp-2 pr-2">

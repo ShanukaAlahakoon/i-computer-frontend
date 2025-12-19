@@ -7,17 +7,14 @@ import {
 
 export default function About() {
   return (
-    // CHANGE 1: Main Background -> Primary (Light), Text -> Secondary (Dark)
     <div className="w-full min-h-screen bg-primary text-secondary pt-[50px] pb-20 px-6">
-      {/* 1. Hero Section */}
       <div className="max-w-7xl mx-auto text-center mb-20">
         <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tight mb-6 text-secondary">
           Who We{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-yellow-600">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-gold to-yellow-600">
             Are
           </span>
         </h1>
-        {/* Description text -> darker gray for readability on light bg */}
         <p className="text-secondary/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
           At <span className="text-gold font-bold">i-Computers</span>, we don't
           just sell computers; we engineer dreams. From high-end gaming rigs to
@@ -25,12 +22,9 @@ export default function About() {
         </p>
       </div>
 
-      {/* 2. Content Section (Image + Text) */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
-        {/* Left: Image */}
         <div className="relative group">
-          {/* Glow Effect modified to match Gold theme */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-gold to-yellow-600 rounded-2xl blur opacity-20 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
+          <div className="absolute -inset-1 bg-linear-to-r from-gold to-yellow-600 rounded-2xl blur opacity-20 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
 
           <img
             src="/about.jpg"
@@ -59,7 +53,6 @@ export default function About() {
             the perfect solution for you.
           </p>
 
-          {/* Stats */}
           <div className="flex gap-8 mt-4 border-t border-secondary/10 pt-6">
             <div>
               <h3 className="text-3xl font-bold text-gold">5K+</h3>
@@ -83,7 +76,6 @@ export default function About() {
         </div>
       </div>
 
-      {/* 3. "Why Choose Us" Grid */}
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 text-secondary">
           Why Choose <span className="text-gold">Us?</span>
@@ -116,10 +108,8 @@ export default function About() {
   );
 }
 
-// Feature Card Component (Updated for Light Theme)
 function FeatureCard({ icon, title, desc }) {
   return (
-    // Card Styles: White BG, Light Border, Shadow on Hover
     <div className="bg-white p-8 rounded-xl border border-secondary/10 shadow-sm hover:shadow-xl hover:border-gold/50 transition-all duration-300 group">
       <div className="text-4xl text-secondary/40 group-hover:text-gold transition-colors duration-300 mb-4">
         {icon}

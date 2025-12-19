@@ -78,7 +78,6 @@ export default function LoginPage() {
   }
 
   return (
-    // Main Container: Changed to flex-col for mobile, flex-row for desktop
     <div className="w-full h-screen bg-[url('/bg.jpg')] bg-center bg-cover bg-no-repeat flex flex-col md:flex-row overflow-y-auto md:overflow-hidden">
       {/* Left Side: Branding */}
       <div className="w-full md:w-[50%] h-auto md:h-full flex flex-col justify-center items-center p-5 md:p-0 pt-10 md:pt-0">

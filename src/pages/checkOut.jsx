@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { clearCart } from "../utils/cart.js";
 
 export default function CheckOut() {
   const location = useLocation();
@@ -59,8 +60,9 @@ export default function CheckOut() {
         }
       )
       .then((res) => {
+        clearCart();
         toast.success("Order placed successfully!");
-        navigate("/ ");
+        navigate("/orders ");
       })
       .catch((err) => {
         toast.error("Failed to place order. Please try again.");
@@ -78,13 +80,10 @@ export default function CheckOut() {
             return (
               <div
                 key={item.productID}
-                // Changed: Padding adjusted for mobile (p-4 vs p-6)
                 className="flex flex-col md:flex-row items-center p-4 md:p-6 hover:bg-gray-50/50 transition-colors duration-200"
               >
                 {/* Product Image & Details Section */}
-                {/* Changed: Gap adjusted (gap-4 vs gap-6) */}
                 <div className="flex flex-1 w-full md:w-auto items-center gap-4 md:gap-6">
-                  {/* Changed: Image size adjusted (w-20 vs w-24) */}
                   <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center">
                     <img
                       src={item.image}
@@ -95,7 +94,6 @@ export default function CheckOut() {
 
                   <div className="flex flex-col gap-1">
                     <div className="relative group w-fit">
-                      {/* Changed: Text size adjusted */}
                       <h1 className="text-base md:text-lg font-bold text-gray-800 leading-tight cursor-help">
                         {item.name.length > 20
                           ? item.name.substring(0, 20) + "..."
@@ -179,7 +177,6 @@ export default function CheckOut() {
         </div>
 
         {/* Shipping Information Section */}
-        {/* Changed: Padding adjusted (p-6 vs p-8) */}
         <div className="bg-white p-6 md:p-8 rounded-xl shadow-md border border-gray-100">
           <h2 className="text-xl font-bold text-gray-800 mb-6">
             Shipping Information
@@ -240,17 +237,14 @@ export default function CheckOut() {
         </div>
 
         {/* Footer / Checkout Section */}
-        {/* Changed: flex-col-reverse for mobile (Total on top, Order Button on bottom) */}
         <div className="bg-gray-50 p-6 md:p-8 flex flex-col-reverse md:flex-row justify-between items-center border-t border-gray-200 gap-4">
           <button
             onClick={submitOrder}
-            // Changed: w-full for mobile to be easily clickable
             className="w-full md:w-auto px-8 py-3 rounded-lg bg-accent border border-gray-300 text-white font-medium hover:bg-gray-100 hover:text-accent transition shadow-sm"
           >
             Order Now
           </button>
 
-          {/* Changed: w-full and justify-between for mobile */}
           <div className="w-full md:w-auto flex justify-between md:justify-start items-center gap-6">
             <span className="text-gray-500 font-medium">Subtotal</span>
             <span className="text-xl md:text-2xl font-bold text-gray-900">
