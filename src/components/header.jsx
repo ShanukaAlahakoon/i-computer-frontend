@@ -11,7 +11,6 @@ export default function Header() {
     // Header Wrapper
     <header className="w-full h-[100px] bg-accent flex items-center px-6 relative z-50">
       {/* --- LEFT SECTION: Logo & Menu --- */}
-      {/* flex-1 දාලා වම් පැත්තට ඉඩ වෙන් කරනවා */}
       <div className="flex flex-1 items-center justify-start gap-4">
         <LuListCollapse
           onClick={() => setSidebarOpen(true)}
@@ -21,8 +20,6 @@ export default function Header() {
       </div>
 
       {/* --- CENTER SECTION: Desktop Navigation (THE FIX) --- */}
-      {/* OLD (Bad): absolute left-1/2 ... */}
-      {/* NEW (Good): flex-none (හෝ w-auto) දාලා මැදට ගන්නවා */}
       <div className="hidden lg:flex items-center gap-[30px] text-xl text-primary font-medium">
         <Link to="/" className="hover:text-white transition">
           Home
@@ -39,7 +36,6 @@ export default function Header() {
       </div>
 
       {/* --- RIGHT SECTION: UserData & Cart --- */}
-      {/* flex-1 දාලා දකුණු පැත්තට ඉඩ වෙන් කරනවා, justify-end දාලා අයිනට යවනවා */}
       <div className="flex flex-1 items-center justify-end gap-6">
         <div className="hidden lg:block">
           <UserData />

@@ -78,64 +78,64 @@ export default function LoginPage() {
   }
 
   return (
-    // Main Container: Changed to flex-col for mobile, flex-row for desktop
-    <div className="w-full h-screen bg-[url('/bg.jpg')] bg-center bg-cover bg-no-repeat flex flex-col md:flex-row overflow-y-auto md:overflow-hidden">
-      {/* Left Side: Branding */}
-      <div className="w-full md:w-[50%] h-auto md:h-full flex flex-col justify-center items-center p-5 md:p-0 pt-10 md:pt-0">
+    <div className="w-full min-h-screen md:h-screen bg-[url('/bg.jpg')] bg-center bg-cover bg-no-repeat flex flex-col md:flex-row overflow-hidden">
+      <div className="w-full md:w-[50%] shrink-0 flex flex-col justify-end md:justify-center items-center p-4 md:p-0 pb-2 md:pb-0">
         <img
           src="/logo.png"
           alt="logo"
-          className="w-[120px] h-[120px] md:w-[200px] md:h-[200px] mb-5 object-cover"
+          className="w-20 h-20 md:w-[200px] md:h-[200px] mb-2 md:mb-5 object-cover drop-shadow-lg"
         />
-        <h1 className="text-[32px] md:text-[50px] text-center text-gold text-shadow-accent text-shadow-2xs font-bold leading-tight">
-          Plug In. Power Up. Play Hard.
+        <h1 className="text-2xl md:text-[50px] text-center text-gold text-shadow-accent text-shadow-2xs font-bold px-4">
+          Plug In. Power Up.
+          <br /> Play Hard.
         </h1>
-        <p className="text-[20px] md:text-[30px] text-white italic text-center mt-2">
+        <p className="text-sm md:text-[30px] text-white italic text-center mt-1 md:mt-2 opacity-90">
           Your Ultimate Destination for Gaming Gear
         </p>
       </div>
 
-      {/* Right Side: Login Form */}
-      <div className="w-full md:w-1/2 h-full flex justify-center items-center p-4">
-        <div className="w-full max-w-[450px] h-auto backdrop-blur-lg shadow-2xl rounded-2xl flex flex-col justify-center items-center p-5 md:p-[30px] border border-white/10 my-10 md:my-0">
-          <h1 className="text-[30px] md:text-[40px] font-bold mb-5 text-white text-shadow-white ">
+      <div className="w-full md:w-1/2 grow md:grow-0 flex justify-center items-start md:items-center p-4">
+        <div className="w-full max-w-[450px] h-auto backdrop-blur-lg shadow-2xl rounded-2xl flex flex-col justify-center items-center p-6 md:p-[30px] border border-white/10 mt-2 md:mt-0">
+          <h1 className="text-2xl md:text-[40px] font-bold mb-4 md:mb-5 text-white text-shadow-white">
             Login
           </h1>
+
           <input
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Your email"
             type="email"
-            className="w-full h-[50px] mb-5 rounded-lg border border-accent p-2.5 text-[18px] md:text-[20px] focus:outline-none focus:ring-2 focus:ring-gold"
+            className="w-full h-[45px] md:h-[50px] mb-4 md:mb-5 rounded-lg border border-accent p-2.5 text-base md:text-[20px] focus:outline-none focus:ring-2 focus:ring-gold"
           />
           <input
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Your password"
             type="password"
-            className="w-full h-[50px] mb-5 rounded-lg border border-accent p-2.5 text-[18px] md:text-[20px] focus:outline-none focus:ring-gold focus:ring-2"
+            className="w-full h-[45px] md:h-[50px] mb-4 md:mb-5 rounded-lg border border-accent p-2.5 text-base md:text-[20px] focus:outline-none focus:ring-gold focus:ring-2"
           />
-          <p className="text-white not-italic text-right w-full mb-5 text-sm md:text-base">
+
+          <p className="text-white not-italic text-right w-full mb-4 md:mb-5 text-sm md:text-base">
             Forget your password?
             <Link to="/forgot-password" className="text-gold italic ml-1">
               Reset here
             </Link>
           </p>
+
           <button
             onClick={login}
-            className="w-full mb-5 h-[50px] bg-accent text-white font-bold text-[18px] md:text-[20px] rounded-lg border-2 border-accent hover:bg-transparent hover:text-accent transition-all duration-300"
+            className="w-full mb-4 md:mb-5 h-[45px] md:h-[50px] bg-accent text-white font-bold text-lg md:text-[20px] rounded-lg border-2 border-accent hover:bg-transparent hover:text-accent transition-all duration-300"
           >
             Login
           </button>
+
           <button
             onClick={googleLogin}
-            className="w-full h-[50px] bg-transparent text-white font-bold text-[18px] md:text-[20px] rounded-lg border-2 border-accent hover:bg-accent hover:text-white flex items-center justify-center transition-all duration-300"
+            className="w-full h-[45px] md:h-[50px] bg-transparent text-white font-bold text-lg md:text-[20px] rounded-lg border-2 border-accent hover:bg-accent hover:text-white flex items-center justify-center transition-all duration-300"
           >
-            Login with <GrGoogle className="inline ml-2 text-2xl mb-1" />
+            Login with{" "}
+            <GrGoogle className="inline ml-2 text-xl md:text-2xl mb-1" />
           </button>
-          <p className="text-white not-italic mt-5 text-sm md:text-base">
+
+          <p className="text-white not-italic mt-4 md:mt-5 text-sm md:text-base">
             Don't have an account?
             <Link to="/register" className="text-gold italic ml-1">
               Register here
@@ -143,6 +143,7 @@ export default function LoginPage() {
           </p>
         </div>
       </div>
+
       {isLoading && <Loader />}
     </div>
   );
